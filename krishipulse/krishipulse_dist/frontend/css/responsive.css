@@ -1,0 +1,203 @@
+/* ==========================================================================
+   KrishiPulse - Ultra-Sleek Native Mobile & Tablet Responsive Engine
+   Author: Chetan (Mandya, Karnataka)
+   Optimized for Android Chrome & iOS Safari (Zero Horizontal Overflow)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. General Touch & Screen Resets
+   -------------------------------------------------------------------------- */
+@media (pointer: coarse) {
+  button, .nav-item, .btn, .region-btn, .tmpl-opt-btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Tablet Viewport (769px - 1024px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .page-container {
+    padding: 20px 20px 40px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dashboard-grid > div {
+    grid-column: span 12 !important;
+  }
+
+  .advisor-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. Mobile Viewport (Max-width: 768px - Smartphones & Small Tablets)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  
+  /* Mobile Top Navbar Header */
+  .navbar {
+    height: 56px;
+    padding: 0 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-card);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .navbar-left {
+    gap: 8px;
+  }
+
+  .breadcrumb-sub,
+  .search-trigger span,
+  .search-trigger kbd {
+    display: none;
+  }
+
+  .search-trigger {
+    padding: 8px;
+    border-radius: 9999px;
+  }
+
+  .template-selector-pill {
+    display: none; /* Hide template pills on small mobile header to prevent clutter */
+  }
+
+  .region-btn {
+    padding: 4px 8px;
+    font-size: 11px;
+  }
+
+  /* Sliding Mobile Sidebar Drawer */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 270px;
+    height: 100vh;
+    height: 100dvh;
+    background-color: var(--bg-sidebar);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    transition: left var(--transition-normal);
+    z-index: 999;
+  }
+
+  .sidebar.mobile-open {
+    left: 0;
+  }
+
+  /* Page Canvas Container */
+  .page-container {
+    padding: 14px 14px 32px;
+  }
+
+  /* Apitex Hero Card Mobile Formatting */
+  .card-hero-mesh {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .card-hero-mesh .flex.items-center.justify-between {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .card-hero-mesh .flex.items-center.gap-3 {
+    width: 100%;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .card-hero-mesh .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .welcome-title {
+    font-size: 20px;
+    line-height: 1.3;
+  }
+
+  /* Mobile Stacking Grids */
+  .kpi-grid,
+  .market-grid,
+  .weather-grid,
+  .farm-plots-grid,
+  .forecast-7day-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .stat-card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  /* Touch-friendly Data Tables */
+  .data-table-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 10px 12px;
+    white-space: nowrap;
+  }
+
+  /* Mobile Modals (Auth & Search) */
+  .modal-overlay {
+    padding: 14px;
+    align-items: center;
+  }
+
+  .modal-content {
+    width: 94vw;
+    max-width: 440px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 18px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Extra Small Smartphones (Max-width: 480px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .user-profile-badge span {
+    display: none;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .footer {
+    padding: 16px 14px;
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

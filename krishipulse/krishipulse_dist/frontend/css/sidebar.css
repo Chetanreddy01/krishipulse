@@ -1,0 +1,199 @@
+/* ==========================================================================
+   KrishiPulse - Sidebar Component Stylesheet
+   Left vertical drawer navigation menu with active highlights & badges
+   ========================================================================== */
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 256px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 16px;
+  transition: width var(--transition-normal);
+  z-index: 30;
+  shrink: 0;
+}
+
+.sidebar.collapsed {
+  width: 68px;
+  padding: 20px 10px;
+}
+
+/* Brand Header Logo */
+.brand-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary-green);
+  color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.25);
+}
+
+.sidebar-toggle-btn {
+  padding: 6px;
+  border-radius: 8px;
+  color: var(--text-secondary);
+  transition: background-color var(--transition-fast);
+}
+
+.sidebar-toggle-btn:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Navigation Groups */
+.nav-group {
+  margin-bottom: 20px;
+}
+
+.nav-group-title {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0 12px;
+  margin-bottom: 6px;
+}
+
+.sidebar.collapsed .nav-group-title {
+  display: none;
+}
+
+/* Navigation Items */
+.nav-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: var(--border-radius-sm);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  margin-bottom: 3px;
+}
+
+.nav-item-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-item-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.nav-item:hover {
+  background-color: var(--bg-hover);
+  color: var(--text-primary);
+  transform: translateX(2px);
+}
+
+.nav-item:hover .nav-item-icon {
+  color: var(--primary-green);
+}
+
+/* Active Nav State */
+.nav-item.active {
+  background-color: rgba(22, 163, 74, 0.12);
+  color: var(--primary-green);
+  font-weight: 800;
+  border-left: 3.5px solid var(--primary-green);
+}
+
+.nav-item.active .nav-item-icon {
+  color: var(--primary-green);
+}
+
+/* Navigation Pills & Badges */
+.nav-badge {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 9999px;
+  background-color: rgba(22, 163, 74, 0.15);
+  color: var(--dark-green);
+}
+
+.sidebar.collapsed .nav-item-label,
+.sidebar.collapsed .nav-badge {
+  display: none;
+}
+
+/* Sidebar Footer Profile Card */
+.sidebar-footer {
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+}
+
+.profile-card-mini {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: var(--border-radius-sm);
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+}
+
+.profile-card-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.profile-name {
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-phone {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--primary-green);
+}
+
+.sidebar.collapsed .profile-card-info {
+  display: none;
+}

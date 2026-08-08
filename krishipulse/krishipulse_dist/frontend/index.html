@@ -4,34 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>KrishiPulse — Smart Agriculture & Karnataka APMC Mandi Telemetry</title>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
-
-  <!-- PWA Mobile Web App Manifest -->
-  <link rel="manifest" href="public/manifest.json" />
-  <meta name="theme-color" content="#15803D" />
 
   <!-- External Stylesheets (Grouped Clean CSS) -->
-  <link rel="stylesheet" href="frontend/css/style.css">
-  <link rel="stylesheet" href="frontend/css/layout.css">
-  <link rel="stylesheet" href="frontend/css/components.css">
-  <link rel="stylesheet" href="frontend/css/pages.css">
-  <link rel="stylesheet" href="frontend/css/responsive.css">
-  <link rel="stylesheet" href="frontend/css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
 
-  <!-- JavaScript ES6 Modules -->
-  <script src="frontend/js/api.js" defer></script>
-  <script src="frontend/js/utils.js" defer></script>
-  <script src="frontend/js/dashboard.js" defer></script>
-  <script src="frontend/js/advisor.js" defer></script>
-  <script src="frontend/js/weather.js" defer></script>
-  <script src="frontend/js/market.js" defer></script>
-  <script src="frontend/js/farm.js" defer></script>
-  <script src="frontend/js/script.js" defer></script>
+  <!-- Deferred JavaScript Modules -->
+  <script src="js/api.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/advisor.js" defer></script>
+  <script src="js/weather.js" defer></script>
+  <script src="js/market.js" defer></script>
+  <script src="js/farm.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 <body>
-
-  <!-- Mobile Sidebar Backdrop Overlay -->
-  <div class="sidebar-backdrop" id="sidebar-backdrop"></div>
 
   <div class="app-layout">
     
@@ -176,11 +168,6 @@
       <!-- Top Glass Navbar Header -->
       <header class="navbar">
         <div class="navbar-left">
-          <!-- Mobile Sidebar Drawer Toggle Button -->
-          <button class="sidebar-toggle-btn" id="mobile-sidebar-toggle-btn" style="font-size: 20px; padding: 4px 8px; border-radius: 8px; border: 1px solid var(--border-color); background: var(--bg-primary);">
-            ☰
-          </button>
-
           <div class="breadcrumb">
             <span class="breadcrumb-sub">Workspace</span>
             <span style="color: var(--border-color);">/</span>
@@ -204,29 +191,22 @@
 
         <div class="navbar-right">
           
-          <!-- 4 Aesthetic Templates Selector Pill -->
-          <div class="template-selector-pill">
-            <button class="tmpl-opt-btn active" data-tmpl="apitex">💳 Apitex</button>
-            <button class="tmpl-opt-btn" data-tmpl="petify">🐶 Petify</button>
-            <button class="tmpl-opt-btn" data-tmpl="linear">🌌 Linear</button>
-            <button class="tmpl-opt-btn" data-tmpl="notion">📜 Notion</button>
+          <!-- Aesthetic Theme Switcher Pill -->
+          <div class="theme-selector-pill">
+            <button class="theme-opt-btn active" data-theme="paper">🌿 Linen</button>
+            <button class="theme-opt-btn" data-theme="midnight">🌌 Midnight</button>
+            <button class="theme-opt-btn" data-theme="warm-sand">🪵 Sand</button>
           </div>
 
-          <!-- Search Button Trigger -->
-          <div class="search-trigger" id="search-trigger-btn">
+          <div class="search-trigger">
             <span>🔍 Search crops, mandis, plots...</span>
             <kbd>⌘K</kbd>
           </div>
 
-          <!-- Login / Signup Auth Button -->
-          <button class="btn btn-secondary" id="auth-modal-btn" style="padding: 6px 14px; font-size: 12px;">
-            🔑 Login / Signup
-          </button>
-
           <!-- Chetan Profile Badge -->
           <div class="user-profile-badge" id="header-profile-btn">
             <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Chetan" class="user-avatar">
-            <span id="header-user-name">CHETAN</span>
+            <span>CHETAN</span>
           </div>
         </div>
       </header>
@@ -244,86 +224,6 @@
 
     </div>
 
-  </div>
-
-  <!-- Sleek Notion / Stripe Style Search Modal Overlay -->
-  <div class="modal-overlay" id="search-modal" style="display: none;">
-    <div class="modal-content">
-      <div class="search-input-wrapper">
-        <span class="search-input-icon">🔍</span>
-        <input type="text" id="global-search-input" class="search-input-field" placeholder="Search crops, mandis, districts, recipes..." autocomplete="off">
-        <button class="btn btn-secondary" id="close-search-modal" style="padding: 3px 8px; font-size: 11px;">ESC</button>
-      </div>
-
-      <div class="search-results-container" id="search-results-list">
-        <!-- Dynamically rendered by script.js -->
-      </div>
-    </div>
-  </div>
-
-  <!-- Login & Signup Modal Overlay -->
-  <div class="modal-overlay" id="auth-modal" style="display: none;">
-    <div class="modal-content" style="max-width: 440px; padding: 24px;">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-2">
-          <button class="btn btn-primary" id="login-tab-btn" style="padding: 6px 14px; font-size: 12px;">Login</button>
-          <button class="btn btn-secondary" id="signup-tab-btn" style="padding: 6px 14px; font-size: 12px;">Signup</button>
-        </div>
-        <button class="btn btn-secondary" id="close-auth-modal" style="padding: 2px 8px; font-size: 11px;">✕</button>
-      </div>
-
-      <!-- Login Form -->
-      <form id="login-form">
-        <h3 class="card-title mb-1">Welcome Back 👋</h3>
-        <p class="card-subtitle mb-4">Log in to your KrishiPulse agronomist dashboard.</p>
-        
-        <div class="form-group">
-          <label class="form-label">Phone Number or Email</label>
-          <input type="text" id="login-id" class="form-control" placeholder="7338025342 or chetanreddy445@gmail.com" required>
-        </div>
-
-        <div class="form-group mb-4">
-          <label class="form-label">Password</label>
-          <input type="password" id="login-pass" class="form-control" placeholder="••••••••" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-full">🔑 Sign In to Workspace</button>
-      </form>
-
-      <!-- Signup Form -->
-      <form id="signup-form" style="display: none;">
-        <h3 class="card-title mb-1">Create Farmer Account 🌾</h3>
-        <p class="card-subtitle mb-4">Register your agricultural enterprise on KrishiPulse.</p>
-
-        <div class="form-group">
-          <label class="form-label">Full Name</label>
-          <input type="text" id="signup-name" class="form-control" placeholder="Chetan" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Mobile Number</label>
-          <input type="tel" id="signup-phone" class="form-control" placeholder="7338025342" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Email Address</label>
-          <input type="email" id="signup-email" class="form-control" placeholder="chetanreddy445@gmail.com" required>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Karnataka District</label>
-          <input type="text" id="signup-district" class="form-control" placeholder="Mandya" required>
-        </div>
-
-        <div class="form-group mb-4">
-          <label class="form-label">Create Password</label>
-          <input type="password" id="signup-pass" class="form-control" placeholder="••••••••" required>
-        </div>
-
-        <button type="submit" class="btn btn-primary w-full">✨ Register Enterprise Profile</button>
-      </form>
-
-    </div>
   </div>
 
 </body>
