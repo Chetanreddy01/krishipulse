@@ -4,12 +4,31 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Page Layout Shell
+   1. Page Layout Shell & Mobile Sidebar Backdrop
    -------------------------------------------------------------------------- */
 .app-layout {
   display: flex;
   min-height: 100vh;
   background-color: var(--bg-primary);
+}
+
+.sidebar-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 55;
+  display: none;
+  transition: opacity var(--transition-fast);
+}
+
+.sidebar-backdrop.active {
+  display: block;
 }
 
 .main-content {

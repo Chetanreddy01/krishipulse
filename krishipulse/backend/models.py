@@ -3,9 +3,7 @@ KrishiPulse - Database ORM Models (models.py)
 Author: Chetan (Mandya, Karnataka)
 """
 
-from sqlalchemy import Column, Integer, String, Float, ForeignKey, DateTime
-from sqlalchemy.orm import relationship
-from datetime import datetime
+from sqlalchemy import Column, Integer, String, Float, ForeignKey
 from database import Base
 
 class UserModel(Base):
@@ -18,6 +16,7 @@ class UserModel(Base):
     role = Column(String, default="farmer")
     district = Column(String, default="Mandya")
     farm_size_acres = Column(Float, default=12.5)
+    hashed_password = Column(String, nullable=False)  # Securely hashed password
 
 class PlotModel(Base):
     __tablename__ = "plots"

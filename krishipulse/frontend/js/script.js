@@ -1,7 +1,7 @@
 /* ==========================================================================
    KrishiPulse - Main Application Controller (script.js)
    Author: Chetan (Mandya, Karnataka)
-   Description: Connects all 13 modules, 4 template switchers, global search modal & router
+   Description: Connects all 13 modules, Login/Signup auth modal, search & router
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,28 +12,233 @@ document.addEventListener('DOMContentLoaded', () => {
   const regionDropdown = $('#region-dropdown');
   const sidebar = $('#sidebar');
   const sidebarToggleBtn = $('#sidebar-toggle-btn');
+  const mobileSidebarToggleBtn = $('#mobile-sidebar-toggle-btn');
+  const sidebarBackdrop = $('#sidebar-backdrop');
   const currentTabLabel = $('#current-tab-label');
   const tmplBtns = $$('.tmpl-opt-btn');
   const headerProfileBtn = $('#header-profile-btn');
+  const headerUserName = $('#header-user-name');
+  
+  // Search Modal Elements
   const searchTriggerBtn = $('#search-trigger-btn');
   const searchModal = $('#search-modal');
   const closeSearchModalBtn = $('#close-search-modal');
   const globalSearchInput = $('#global-search-input');
-  const searchItems = $$('.search-item');
+  const searchResultsList = $('#search-results-list');
+
+  // Auth Modal Elements
+  const authModalBtn = $('#auth-modal-btn');
+  const authModal = $('#auth-modal');
+  const closeAuthModalBtn = $('#close-auth-modal');
+  const loginTabBtn = $('#login-tab-btn');
+  const signupTabBtn = $('#signup-tab-btn');
+  const loginForm = $('#login-form');
+  const signupForm = $('#signup-form');
 
   let currentTab = 'dashboard';
+
+  // Mobile Sidebar Drawer Control Functions
+  function openMobileSidebar() {
+    if (sidebar) sidebar.classList.add('mobile-open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.add('active');
+  }
+
+  function closeMobileSidebar() {
+    if (sidebar) sidebar.classList.remove('mobile-open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove('active');
+  }
+
+  function toggleMobileSidebar() {
+    if (sidebar && sidebar.classList.contains('mobile-open')) {
+      closeMobileSidebar();
+    } else {
+      openMobileSidebar();
+    }
+  }
+
+  if (mobileSidebarToggleBtn) {
+    mobileSidebarToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileSidebar();
+    });
+  }
+
+  if (sidebarToggleBtn) {
+    sidebarToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileSidebar();
+    });
+  }
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', closeMobileSidebar);
+  }
+
+  // Auth Modal Event Handlers
+  if (authModalBtn && authModal) {
+    authModalBtn.addEventListener('click', () => {
+      authModal.style.display = 'flex';
+    });
+  }
+
+  if (closeAuthModalBtn && authModal) {
+    closeAuthModalBtn.addEventListener('click', () => {
+      authModal.style.display = 'none';
+    });
+  }
+
+  if (loginTabBtn && signupTabBtn) {
+    loginTabBtn.addEventListener('click', () => {
+      loginTabBtn.className = 'btn btn-primary';
+      signupTabBtn.className = 'btn btn-secondary';
+      loginForm.style.display = 'block';
+      signupForm.style.display = 'none';
+    });
+
+    signupTabBtn.addEventListener('click', () => {
+      loginTabBtn.className = 'btn btn-secondary';
+      signupTabBtn.className = 'btn btn-primary';
+      loginForm.style.display = 'none';
+      signupForm.style.display = 'block';
+    });
+  }
+
+  // Handle Login Submission
+  if (loginForm) {
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const loginId = $('#login-id').value;
+      const pass = $('#login-pass').value;
+
+      try {
+        const user = await loginUser(loginId, pass);
+        if (user) {
+          if (headerUserName) headerUserName.textContent = user.name.toUpperCase();
+          if (authModal) authModal.style.display = 'none';
+          alert(`Welcome back, ${user.name}! Authenticated successfully.`);
+        }
+      } catch (err) {
+        alert(`❌ Authentication Error: ${err.message}`);
+      }
+    });
+  }
+
+  // Handle Signup Submission
+  if (signupForm) {
+    signupForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const userData = {
+        name: $('#signup-name').value,
+        phone: $('#signup-phone').value,
+        email: $('#signup-email').value,
+        district: $('#signup-district').value,
+        password: $('#signup-pass').value
+      };
+
+      try {
+        const newUser = await signupUser(userData);
+        if (newUser) {
+          if (headerUserName) headerUserName.textContent = newUser.name.toUpperCase();
+          if (authModal) authModal.style.display = 'none';
+          alert(`🎉 Account created successfully for ${newUser.name} (${newUser.district} Region)! You can now log in.`);
+        }
+      } catch (err) {
+        alert(`❌ Registration Error: ${err.message}`);
+      }
+    });
+  }
+
+  // Search Database Index
+  const searchableData = [
+    { title: '🧪 Crop Advisor AI (31 Karnataka Districts)', subtitle: 'Soil NPK sliders, crop suitability matching for Mandya, Kalaburagi, Mysuru, Kodagu, Belagavi, etc.', category: 'Advisor', tab: 'advisor' },
+    { title: '📈 APMC Commodity Mandi Rates', subtitle: 'Live prices for Ragi, Sugarcane, Tomato, Paddy across Mandya, Maddur & Kolar APMC', category: 'Market', tab: 'market' },
+    { title: '📜 Jeevamrutha Organic Bio-Enhancer', subtitle: '200L Water, 10kg Cow Dung, 10L Urine, 2kg Jaggery, 2kg Besan - Soil microbe booster', category: 'Recipe', tab: 'advisor' },
+    { title: '📜 Beejamrutha Seed Coating Formulation', subtitle: 'Organic seed treatment against root rot, wilt, and fungal spores', category: 'Recipe', tab: 'advisor' },
+    { title: '📜 Panchagavya Growth Stimulant', subtitle: '5 cow derivatives formulation for flowering and fruit drop prevention', category: 'Recipe', tab: 'advisor' },
+    { title: '📜 Neemastra Organic Insecticide', subtitle: '10kg Neem Leaves + 10L Cow Urine for sucking pests (aphids, thrips)', category: 'Recipe', tab: 'advisor' },
+    { title: '📜 Agniastra Borer Control', subtitle: 'Boiled Chilli, Garlic, Ginger & Neem extract for stem & fruit borers', category: 'Recipe', tab: 'advisor' },
+    { title: '⛅ Micro-Climate Weather Telemetry', subtitle: 'Temperature, humidity, wind speed, 24h rain, ET0 & pesticide spraying safety window', category: 'Weather', tab: 'weather' },
+    { title: '🛡️ Managed Land Plots Ledger', subtitle: 'North Field Ragi (5.5A), East Sugarcane (4A), South Tomato (3A) growth ledgers', category: 'Farm', tab: 'farm' },
+    { title: '🔬 Plant Disease AI Scanner', subtitle: 'Computer Vision diagnostic scanner for leaf blight, rust, and viral lesions', category: 'Disease', tab: 'disease' },
+    { title: '💧 Smart Irrigation Sensor Telemetry', subtitle: 'Soil moisture percentage sensors and automated solenoid valve controls', category: 'Irrigation', tab: 'irrigation' },
+    { title: '🏛️ Karnataka Govt Subsidies & Schemes', subtitle: 'Krishi Bhagya, PM-KISAN, Raitha Siri, SMAM farm mechanization updates', category: 'Govt', tab: 'schemes' }
+  ];
 
   // Open Search Modal
   function openSearchModal() {
     if (searchModal) {
       searchModal.style.display = 'flex';
-      if (globalSearchInput) globalSearchInput.focus();
+      if (globalSearchInput) {
+        globalSearchInput.value = '';
+        globalSearchInput.focus();
+        renderSearchResults('');
+      }
     }
   }
 
   // Close Search Modal
   function closeSearchModal() {
     if (searchModal) searchModal.style.display = 'none';
+  }
+
+  // Render Search Results dynamically based on user input query
+  function renderSearchResults(query) {
+    if (!searchResultsList) return;
+
+    const cleanQuery = query.trim().toLowerCase();
+
+    const filtered = searchableData.filter(item => {
+      if (!cleanQuery) return true;
+      return item.title.toLowerCase().includes(cleanQuery) ||
+             item.subtitle.toLowerCase().includes(cleanQuery) ||
+             item.category.toLowerCase().includes(cleanQuery);
+    });
+
+    if (filtered.length === 0) {
+      searchResultsList.innerHTML = `
+        <div style="padding: 20px; text-align: center; color: var(--text-muted); font-size: 13px;">
+          🔍 No results found for "<strong>${query}</strong>". Try searching for <em>Ragi, Sugarcane, Mandya, Jeevamrutha, Weather, or Disease</em>.
+        </div>
+      `;
+      return;
+    }
+
+    searchResultsList.innerHTML = filtered.map(item => `
+      <div class="search-result-card" data-tab="${item.tab}" style="padding: 12px 16px; border-radius: 12px; background: var(--bg-primary); border: 1px solid var(--border-color); cursor: pointer; transition: all 0.15s ease;">
+        <div class="flex items-center justify-between">
+          <strong style="font-size: 13px; color: var(--text-primary);">${item.title}</strong>
+          <span class="badge badge-slate" style="font-size: 10px;">${item.category}</span>
+        </div>
+        <div class="text-xs text-muted mt-1">${item.subtitle}</div>
+      </div>
+    `).join('');
+
+    // Re-attach click listeners to search result items
+    $$('.search-result-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const tab = card.dataset.tab;
+        if (tab) {
+          closeSearchModal();
+          switchTab(tab);
+        }
+      });
+
+      card.addEventListener('mouseenter', () => {
+        card.style.borderColor = 'var(--primary-green)';
+        card.style.transform = 'translateX(2px)';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.borderColor = 'var(--border-color)';
+        card.style.transform = 'none';
+      });
+    });
+  }
+
+  // Live Input Event Listener
+  if (globalSearchInput) {
+    globalSearchInput.addEventListener('input', (e) => {
+      renderSearchResults(e.target.value);
+    });
   }
 
   // Search trigger click
@@ -64,6 +269,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Navigation Tab Switcher
   function switchTab(tabId) {
     currentTab = tabId;
+
+    // Auto-close mobile sidebar drawer & backdrop when navigating on phones
+    closeMobileSidebar();
 
     // Update active nav styling
     navItems.forEach(item => {
@@ -143,17 +351,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   }
-
-  // Attach click to search result items
-  searchItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const tab = item.dataset.tab;
-      if (tab) {
-        closeSearchModal();
-        switchTab(tab);
-      }
-    });
-  });
 
   // Generic Module Renderers for Precision Labs & System
   function renderDiseasePage(container) {
@@ -357,14 +554,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', () => {
       regionDropdown.classList.remove('open');
-    });
-  }
-
-  // Sidebar Mobile Toggle
-  if (sidebarToggleBtn && sidebar) {
-    sidebarToggleBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('collapsed');
-      sidebar.classList.toggle('mobile-open');
     });
   }
 

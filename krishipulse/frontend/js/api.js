@@ -4,7 +4,11 @@
    Description: Connects to Python FastAPI REST Backend & Live Open-Meteo Weather API
    ========================================================================== */
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Auto-detect backend hostname (Works on Localhost, Mobile Wi-Fi IP & Production)
+const currentHost = window.location.hostname || '127.0.0.1';
+const API_BASE_URL = currentHost.includes('vercel.app') || currentHost.includes('netlify.app')
+  ? 'https://krishipulse-api.onrender.com/api'  // Production API URL
+  : `http://${currentHost}:8000/api`;            // Local & Mobile Wi-Fi Network API URL
 
 // Fetch Chetan's User Profile
 async function fetchUserProfile() {
@@ -27,6 +31,36 @@ async function fetchUserProfile() {
     farmSizeAcres: 12.5,
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80'
   };
+}
+
+// Login User via Python FastAPI REST API
+async function loginUser(emailOrPhone, password) {
+  const response = await fetch(`${API_BASE_URL}/user/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ emailOrPhone, password })
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.detail || 'Login failed. Invalid phone/email or password.');
+  }
+  return data;
+}
+
+// Signup User via Python FastAPI REST API
+async function signupUser(userData) {
+  const response = await fetch(`${API_BASE_URL}/user/signup`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(userData)
+  });
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data.detail || 'Signup failed. Email or phone already registered.');
+  }
+  return data;
 }
 
 // Fetch Karnataka APMC Mandi Market Commodity Prices
@@ -136,7 +170,6 @@ async function fetchFarmPlots() {
 
 // Fetch REAL LIVE Weather Data from Open-Meteo Satellite API via FastAPI or Direct
 async function fetchWeatherData(district = 'Mandya') {
-  // First try FastAPI backend
   try {
     const response = await fetch(`${API_BASE_URL}/weather?district=${district}`);
     if (response.ok) {
@@ -146,7 +179,6 @@ async function fetchWeatherData(district = 'Mandya') {
     console.log('Fetching live Open-Meteo weather API directly...');
   }
 
-  // Direct Live Open-Meteo API Fetch for Mandya/Karnataka
   try {
     const liveRes = await fetch('https://api.open-meteo.com/v1/forecast?latitude=12.5218&longitude=76.8951&current=temperature_2m,relative_humidity_2m,wind_speed_10m,precipitation&timezone=Asia%2FKolkata');
     if (liveRes.ok) {
