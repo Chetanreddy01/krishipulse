@@ -1,0 +1,131 @@
+/* ==========================================================================
+   KrishiPulse - Mobile & Tablet Responsive Stylesheet (responsive.css)
+   PWA Touch Optimization, Safe Area Insets, Zero Horizontal Scroll
+   ========================================================================== */
+
+/* Touch Device Optimization */
+@media (pointer: coarse) {
+  button, .nav-item, .btn, .region-btn, .theme-opt-btn, .tmpl-opt-btn {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+}
+
+/* Tablet Screens (Max-width: 1024px) */
+@media (max-width: 1024px) {
+  .page-container {
+    padding: 20px 24px 40px;
+  }
+
+  .kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .dashboard-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .dashboard-grid > div {
+    grid-column: span 12 !important;
+  }
+
+  .advisor-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+/* Mobile Screens (Max-width: 768px) */
+@media (max-width: 768px) {
+  /* Mobile Sliding Sidebar Drawer */
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 270px;
+    height: 100vh;
+    height: 100dvh;
+    box-shadow: var(--shadow-hover);
+    transition: left var(--transition-normal);
+    z-index: 60;
+  }
+
+  .sidebar.mobile-open {
+    left: 0;
+  }
+
+  /* Glass Navbar Header for Mobile */
+  .navbar {
+    padding: 0 16px;
+    height: 58px;
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .breadcrumb-sub {
+    display: none;
+  }
+
+  .region-btn span:last-child {
+    display: inline;
+  }
+
+  .search-trigger span {
+    display: none;
+  }
+
+  .page-container {
+    padding: 16px 16px 32px;
+  }
+
+  .card-hero-mesh {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .welcome-title {
+    font-size: 20px;
+  }
+
+  /* Single Column Layouts on Mobile */
+  .kpi-grid,
+  .market-grid,
+  .weather-grid,
+  .farm-plots-grid,
+  .forecast-7day-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .user-profile-badge span {
+    display: none;
+  }
+
+  /* Data Table Mobile Touch Scroll */
+  .data-table-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+  }
+}
+
+/* Small Smartphone Screens (Max-width: 480px) */
+@media (max-width: 480px) {
+  .navbar-right {
+    gap: 6px;
+  }
+
+  .template-selector-pill {
+    scale: 0.9;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  .stat-value {
+    font-size: 22px;
+  }
+}

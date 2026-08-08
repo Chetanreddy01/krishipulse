@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>KrishiPulse — Smart Agriculture & Karnataka APMC Mandi Telemetry</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>" />
+
+  <!-- PWA Mobile Web App Manifest -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#15803D" />
+
+  <!-- External Stylesheets (Grouped Clean CSS) -->
+  <link rel="stylesheet" href="/frontend/css/style.css">
+  <link rel="stylesheet" href="/frontend/css/layout.css">
+  <link rel="stylesheet" href="/frontend/css/components.css">
+  <link rel="stylesheet" href="/frontend/css/pages.css">
+  <link rel="stylesheet" href="/frontend/css/responsive.css">
+  <link rel="stylesheet" href="/frontend/css/animations.css">
+
+  <!-- Deferred JavaScript Modules -->
+  <script src="/frontend/js/api.js" defer></script>
+  <script src="/frontend/js/utils.js" defer></script>
+  <script src="/frontend/js/dashboard.js" defer></script>
+  <script src="/frontend/js/advisor.js" defer></script>
+  <script src="/frontend/js/weather.js" defer></script>
+  <script src="/frontend/js/market.js" defer></script>
+  <script src="/frontend/js/farm.js" defer></script>
+  <script src="/frontend/js/script.js" defer></script>
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- 1. Left Sidebar Navigation Drawer (All 13 Modules) -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon">🌱</div>
+            <span>KrishiPulse</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" title="Toggle Sidebar">
+            ☰
+          </button>
+        </div>
+
+        <!-- Navigation Group 1: Core Modules -->
+        <div class="nav-group">
+          <div class="nav-group-title">Core Modules</div>
+          
+          <button class="nav-item active" data-tab="dashboard">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">📊</span>
+              <span class="nav-item-label">Dashboard</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="advisor">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🧪</span>
+              <span class="nav-item-label">Crop Advisor AI</span>
+            </div>
+            <span class="nav-badge">AI</span>
+          </button>
+
+          <button class="nav-item" data-tab="market">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">📈</span>
+              <span class="nav-item-label">Market Intelligence</span>
+            </div>
+            <span class="nav-badge">Live</span>
+          </button>
+
+          <button class="nav-item" data-tab="weather">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">⛅</span>
+              <span class="nav-item-label">Weather Telemetry</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="farm">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🛡️</span>
+              <span class="nav-item-label">Farm Management</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Navigation Group 2: Precision Labs -->
+        <div class="nav-group">
+          <div class="nav-group-title">Precision Labs</div>
+
+          <button class="nav-item" data-tab="disease">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🔬</span>
+              <span class="nav-item-label">Disease Detection</span>
+            </div>
+            <span class="nav-badge">AI</span>
+          </button>
+
+          <button class="nav-item" data-tab="pest">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🐛</span>
+              <span class="nav-item-label">Pest Diagnostics</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="irrigation">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">💧</span>
+              <span class="nav-item-label">Smart Irrigation</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="analytics">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">📈</span>
+              <span class="nav-item-label">Financial Analytics</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="schemes">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🏛️</span>
+              <span class="nav-item-label">Govt Subsidies</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Navigation Group 3: System -->
+        <div class="nav-group">
+          <div class="nav-group-title">System</div>
+
+          <button class="nav-item" data-tab="notifications">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🔔</span>
+              <span class="nav-item-label">Notifications</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="profile">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">👤</span>
+              <span class="nav-item-label">User Profile</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="settings">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">⚙️</span>
+              <span class="nav-item-label">Settings</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer User Profile -->
+      <div class="sidebar-footer">
+        <div class="profile-card-mini">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Chetan" class="user-avatar">
+          <div class="profile-card-info">
+            <span class="profile-name">Chetan</span>
+            <span class="profile-phone">+91 7338025342</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 2. Main Workspace Content Area -->
+    <div class="main-content">
+      
+      <!-- Top Glass Navbar Header -->
+      <header class="navbar">
+        <div class="navbar-left">
+          <div class="breadcrumb">
+            <span class="breadcrumb-sub">Workspace</span>
+            <span style="color: var(--border-color);">/</span>
+            <span id="current-tab-label">Dashboard Overview</span>
+          </div>
+
+          <!-- Region Dropdown Selector -->
+          <div class="region-selector">
+            <button class="region-btn" id="region-btn">
+              <span>📍 Mandya Region</span>
+              <span>▼</span>
+            </button>
+            <div class="region-dropdown" id="region-dropdown">
+              <button class="dropdown-item active">Mandya APMC Hub</button>
+              <button class="dropdown-item">Maddur APMC Market</button>
+              <button class="dropdown-item">Mysuru APMC Hub</button>
+              <button class="dropdown-item">Kolar APMC Market</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          
+          <!-- 4 Aesthetic Templates Selector Pill -->
+          <div class="template-selector-pill">
+            <button class="tmpl-opt-btn active" data-tmpl="apitex">💳 Apitex</button>
+            <button class="tmpl-opt-btn" data-tmpl="petify">🐶 Petify</button>
+            <button class="tmpl-opt-btn" data-tmpl="linear">🌌 Linear</button>
+            <button class="tmpl-opt-btn" data-tmpl="notion">📜 Notion</button>
+          </div>
+
+          <!-- Search Button Trigger -->
+          <div class="search-trigger" id="search-trigger-btn">
+            <span>🔍 Search crops, mandis, plots...</span>
+            <kbd>⌘K</kbd>
+          </div>
+
+          <!-- Chetan Profile Badge -->
+          <div class="user-profile-badge" id="header-profile-btn">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Chetan" class="user-avatar">
+            <span>CHETAN</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic Page Container -->
+      <main class="page-container" id="app-content">
+        <!-- Rendered dynamically by script.js -->
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div>KrishiPulse — Built for Chetan (7338025342 • chetanreddy445@gmail.com)</div>
+        <div>Mandya APMC Hub • Karnataka Agriculture SaaS</div>
+      </footer>
+
+    </div>
+
+  </div>
+
+  <!-- Global Interactive Search Modal Overlay -->
+  <div class="modal-overlay" id="search-modal" style="display: none;">
+    <div class="modal-content" style="max-width: 580px; padding: 20px;">
+      <div class="flex items-center justify-between mb-3">
+        <strong style="font-size: 15px; color: var(--text-primary);">🔍 Search KrishiPulse Platform</strong>
+        <button class="btn btn-secondary" id="close-search-modal" style="padding: 2px 8px; font-size: 11px;">ESC</button>
+      </div>
+
+      <input type="text" id="global-search-input" class="form-control mb-4" placeholder="Type crop (Ragi, Sugarcane), mandi (Mandya, Kolar), or recipe..." autofocus>
+
+      <div class="text-xs font-bold text-muted mb-2 uppercase">Quick Shortcuts</div>
+      <div class="flex flex-col gap-2" id="search-results-list">
+        <div class="search-item" data-tab="advisor" style="padding: 10px; border-radius: 8px; background: var(--bg-primary); cursor: pointer;">
+          <strong>🧪 Crop Advisor & 31 Karnataka Districts</strong>
+          <div class="text-xs text-muted">Mandya, Kalaburagi, Mysuru, Belagavi soil and crop data</div>
+        </div>
+        <div class="search-item" data-tab="market" style="padding: 10px; border-radius: 8px; background: var(--bg-primary); cursor: pointer;">
+          <strong>📈 APMC Commodity Mandi Rates</strong>
+          <div class="text-xs text-muted">Live trading prices across Mandya, Maddur & Kolar APMC</div>
+        </div>
+        <div class="search-item" data-tab="advisor" style="padding: 10px; border-radius: 8px; background: var(--bg-primary); cursor: pointer;">
+          <strong>📜 Jeevamrutha & Beejamrutha Recipes</strong>
+          <div class="text-xs text-muted">Traditional Indian Vedic organic bio-enhancer formulations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

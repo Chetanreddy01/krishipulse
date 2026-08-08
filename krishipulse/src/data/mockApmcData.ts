@@ -1,0 +1,228 @@
+import type { APMCPriceRecord } from '../types';
+
+export const karnatakaDistricts = [
+  'Bengaluru (RMC Yard)',
+  'Mandya',
+  'Kolar',
+  'Mysuru',
+  'Hubballi-Dharwad',
+  'Shimoga (Shivamogga)',
+  'Belagavi',
+  'Davanagere',
+  'Hassan',
+  'Ballari',
+  'Chikmagalur',
+  'Raichur'
+];
+
+export const mockApmcPrices: APMCPriceRecord[] = [
+  {
+    id: 'apmc-1',
+    district: 'Mandya',
+    mandiName: 'Mandya APMC Main Yard',
+    cropName: 'Sugarcane',
+    category: 'Cash Crops',
+    minPrice: 3100,
+    maxPrice: 3450,
+    modalPrice: 3320,
+    prevModalPrice: 3200,
+    changePercent: 3.75,
+    arrivalQtyTonnes: 450,
+    mspPrice: 3150,
+    updatedAt: '2026-08-06 14:30 IST',
+    arbitrageTarget: {
+      mandiName: 'Mysuru Bandipalya APMC',
+      district: 'Mysuru',
+      modalPrice: 3510,
+      extraGainPerQuintal: 190
+    }
+  },
+  {
+    id: 'apmc-2',
+    district: 'Mandya',
+    mandiName: 'Mandya APMC Main Yard',
+    cropName: 'Finger Millet (Ragi)',
+    category: 'Cereals',
+    minPrice: 3800,
+    maxPrice: 4250,
+    modalPrice: 4100,
+    prevModalPrice: 3950,
+    changePercent: 3.80,
+    arrivalQtyTonnes: 180,
+    mspPrice: 3846,
+    updatedAt: '2026-08-06 15:10 IST',
+    arbitrageTarget: {
+      mandiName: 'Bengaluru RMC Yard (Yeshwanthpur)',
+      district: 'Bengaluru (RMC Yard)',
+      modalPrice: 4380,
+      extraGainPerQuintal: 280
+    }
+  },
+  {
+    id: 'apmc-3',
+    district: 'Kolar',
+    mandiName: 'Kolar APMC Tomato Market',
+    cropName: 'Tomato (Hybrid)',
+    category: 'Vegetables',
+    minPrice: 2200,
+    maxPrice: 2850,
+    modalPrice: 2600,
+    prevModalPrice: 2400,
+    changePercent: 8.33,
+    arrivalQtyTonnes: 620,
+    updatedAt: '2026-08-06 15:45 IST',
+    arbitrageTarget: {
+      mandiName: 'Bengaluru Kalasipalyam Market',
+      district: 'Bengaluru (RMC Yard)',
+      modalPrice: 2950,
+      extraGainPerQuintal: 350
+    }
+  },
+  {
+    id: 'apmc-4',
+    district: 'Kolar',
+    mandiName: 'Kolar APMC Main Yard',
+    cropName: 'Potato',
+    category: 'Vegetables',
+    minPrice: 1600,
+    maxPrice: 1950,
+    modalPrice: 1800,
+    prevModalPrice: 1850,
+    changePercent: -2.70,
+    arrivalQtyTonnes: 210,
+    mspPrice: 1650,
+    updatedAt: '2026-08-06 13:20 IST'
+  },
+  {
+    id: 'apmc-5',
+    district: 'Bengaluru (RMC Yard)',
+    mandiName: 'Yeshwanthpur RMC Yard',
+    cropName: 'Onion (Red)',
+    category: 'Vegetables',
+    minPrice: 2400,
+    maxPrice: 2900,
+    modalPrice: 2750,
+    prevModalPrice: 2600,
+    changePercent: 5.77,
+    arrivalQtyTonnes: 890,
+    updatedAt: '2026-08-06 16:00 IST'
+  },
+  {
+    id: 'apmc-6',
+    district: 'Belagavi',
+    mandiName: 'Belagavi APMC Yard',
+    cropName: 'Maize (Yellow Corn)',
+    category: 'Cereals',
+    minPrice: 2150,
+    maxPrice: 2420,
+    modalPrice: 2340,
+    prevModalPrice: 2280,
+    changePercent: 2.63,
+    arrivalQtyTonnes: 340,
+    mspPrice: 2090,
+    updatedAt: '2026-08-06 14:15 IST',
+    arbitrageTarget: {
+      mandiName: 'Davanagere APMC Yard',
+      district: 'Davanagere',
+      modalPrice: 2480,
+      extraGainPerQuintal: 140
+    }
+  },
+  {
+    id: 'apmc-7',
+    district: 'Belagavi',
+    mandiName: 'Belagavi APMC Yard',
+    cropName: 'Raw Cotton (Kapas)',
+    category: 'Cash Crops',
+    minPrice: 6800,
+    maxPrice: 7550,
+    modalPrice: 7300,
+    prevModalPrice: 7100,
+    changePercent: 2.82,
+    arrivalQtyTonnes: 190,
+    mspPrice: 7020,
+    updatedAt: '2026-08-06 15:00 IST'
+  },
+  {
+    id: 'apmc-8',
+    district: 'Shimoga (Shivamogga)',
+    mandiName: 'Shivamogga APMC Yard',
+    cropName: 'Arecanut (Rashi)',
+    category: 'Cash Crops',
+    minPrice: 46000,
+    maxPrice: 51200,
+    modalPrice: 49500,
+    prevModalPrice: 48200,
+    changePercent: 2.70,
+    arrivalQtyTonnes: 95,
+    updatedAt: '2026-08-06 16:15 IST'
+  },
+  {
+    id: 'apmc-9',
+    district: 'Shimoga (Shivamogga)',
+    mandiName: 'Shivamogga APMC Yard',
+    cropName: 'Ginger (Dry)',
+    category: 'Spices',
+    minPrice: 12500,
+    maxPrice: 14800,
+    modalPrice: 13900,
+    prevModalPrice: 13200,
+    changePercent: 5.30,
+    arrivalQtyTonnes: 60,
+    updatedAt: '2026-08-06 12:45 IST'
+  },
+  {
+    id: 'apmc-10',
+    district: 'Chikmagalur',
+    mandiName: 'Chikmagalur Coffee Yard',
+    cropName: 'Arabica Coffee Parchment',
+    category: 'Cash Crops',
+    minPrice: 18500,
+    maxPrice: 21000,
+    modalPrice: 20200,
+    prevModalPrice: 19800,
+    changePercent: 2.02,
+    arrivalQtyTonnes: 75,
+    updatedAt: '2026-08-06 14:00 IST'
+  },
+  {
+    id: 'apmc-11',
+    district: 'Davanagere',
+    mandiName: 'Davanagere APMC Market',
+    cropName: 'Paddy (Sona Masoori)',
+    category: 'Cereals',
+    minPrice: 2250,
+    maxPrice: 2680,
+    modalPrice: 2540,
+    prevModalPrice: 2490,
+    changePercent: 2.01,
+    arrivalQtyTonnes: 520,
+    mspPrice: 2183,
+    updatedAt: '2026-08-06 15:30 IST'
+  },
+  {
+    id: 'apmc-12',
+    district: 'Raichur',
+    mandiName: 'Raichur APMC Yard',
+    cropName: 'Red Gram (Tur Dal)',
+    category: 'Pulses',
+    minPrice: 7400,
+    maxPrice: 8200,
+    modalPrice: 7950,
+    prevModalPrice: 7700,
+    changePercent: 3.25,
+    arrivalQtyTonnes: 280,
+    mspPrice: 7000,
+    updatedAt: '2026-08-06 13:50 IST'
+  }
+];
+
+export const mockPriceTrendChartData = [
+  { day: 'Jul 08', Tomato: 2100, Ragi: 3850, Sugarcane: 3150, Onion: 2300 },
+  { day: 'Jul 13', Tomato: 2250, Ragi: 3900, Sugarcane: 3180, Onion: 2400 },
+  { day: 'Jul 18', Tomato: 2180, Ragi: 3920, Sugarcane: 3200, Onion: 2480 },
+  { day: 'Jul 23', Tomato: 2350, Ragi: 3980, Sugarcane: 3250, Onion: 2550 },
+  { day: 'Jul 28', Tomato: 2420, Ragi: 4020, Sugarcane: 3280, Onion: 2620 },
+  { day: 'Aug 02', Tomato: 2500, Ragi: 4060, Sugarcane: 3300, Onion: 2680 },
+  { day: 'Aug 06', Tomato: 2600, Ragi: 4100, Sugarcane: 3320, Onion: 2750 },
+];

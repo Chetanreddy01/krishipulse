@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+
+# Environment & Databases
+.env
+.env.local
+backend/krishipulse.db
+backend/venv/
+
+# Build Output
+dist/
+build/
+.DS_Store

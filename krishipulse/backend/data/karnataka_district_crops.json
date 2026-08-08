@@ -1,0 +1,188 @@
+[
+  {
+    "district": "Mandya",
+    "soil": "Red Loamy Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Sugarcane", "Paddy", "Ragi", "Banana", "Coconut"]
+  },
+  {
+    "district": "Mysuru",
+    "soil": "Red & Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Ragi", "Cotton", "Tobacco", "Sugarcane"]
+  },
+  {
+    "district": "Hassan",
+    "soil": "Red Sandy Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Coffee", "Potato", "Maize", "Ragi", "Cardamom"]
+  },
+  {
+    "district": "Chamarajanagar",
+    "soil": "Black Cotton Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Turmeric", "Banana", "Ragi", "Paddy", "Sugarcane"]
+  },
+  {
+    "district": "Kodagu",
+    "soil": "Red Laterite Soil",
+    "season": "Kharif",
+    "crops": ["Coffee", "Black Pepper", "Paddy", "Cardamom", "Arecanut"]
+  },
+  {
+    "district": "Ramanagara",
+    "soil": "Red Loamy Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Silk Mulberry", "Ragi", "Mango", "Coconut", "Tomato"]
+  },
+  {
+    "district": "Bengaluru Urban",
+    "soil": "Red Clay Soil",
+    "season": "Kharif, Summer",
+    "crops": ["Ragi", "Maize", "Grapes", "Rose", "Capsicum"]
+  },
+  {
+    "district": "Bengaluru Rural",
+    "soil": "Red Sandy Loam",
+    "season": "Kharif, Rabi",
+    "crops": ["Ragi", "Grapes", "Tomato", "Mango", "Mulberry"]
+  },
+  {
+    "district": "Tumakuru",
+    "soil": "Red Sandy Soil",
+    "season": "Kharif, Summer",
+    "crops": ["Coconut", "Arecanut", "Ragi", "Groundnut", "Pomegranate"]
+  },
+  {
+    "district": "Kolar",
+    "soil": "Red Loamy Soil",
+    "season": "Kharif, Summer",
+    "crops": ["Tomato", "Ragi", "Mango", "Mulberry", "Potato"]
+  },
+  {
+    "district": "Chikkaballapura",
+    "soil": "Red Sandy Soil",
+    "season": "Kharif, Summer",
+    "crops": ["Tomato", "Grapes", "Ragi", "Maize", "Silk Mulberry"]
+  },
+  {
+    "district": "Chitradurga",
+    "soil": "Red & Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Groundnut", "Onion", "Maize", "Cotton", "Pomegranate"]
+  },
+  {
+    "district": "Davanagere",
+    "soil": "Black Cotton Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Maize", "Sugarcane", "Cotton", "Arecanut"]
+  },
+  {
+    "district": "Shivamogga",
+    "soil": "Red Laterite & Clay Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Arecanut", "Paddy", "Maize", "Sugarcane", "Ginger"]
+  },
+  {
+    "district": "Udupi",
+    "soil": "Coastal Alluvial & Laterite",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Cashew", "Coconut", "Arecanut", "Black Pepper"]
+  },
+  {
+    "district": "Dakshina Kannada",
+    "soil": "Laterite Soil",
+    "season": "Kharif, Summer",
+    "crops": ["Arecanut", "Coconut", "Cashew", "Paddy", "Rubber"]
+  },
+  {
+    "district": "Uttara Kannada",
+    "soil": "Coastal Alluvial & Forest Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Arecanut", "Paddy", "Spices", "Cashew", "Coconut"]
+  },
+  {
+    "district": "Belagavi",
+    "soil": "Deep Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Sugarcane", "Soybean", "Maize", "Tobacco", "Cotton"]
+  },
+  {
+    "district": "Dharwad",
+    "soil": "Black Cotton Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Cotton", "Bengal Gram", "Soybean", "Maize", "Wheat"]
+  },
+  {
+    "district": "Gadag",
+    "soil": "Deep Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Byadgi Chilli", "Groundnut", "Onion", "Bengal Gram", "Cotton"]
+  },
+  {
+    "district": "Haveri",
+    "soil": "Red & Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Byadgi Chilli", "Maize", "Cotton", "Groundnut", "Paddy"]
+  },
+  {
+    "district": "Vijayapura",
+    "soil": "Deep Black Cotton Soil",
+    "season": "Rabi, Summer",
+    "crops": ["Jowar", "Grapes", "Pomegranate", "Lime", "Bengal Gram"]
+  },
+  {
+    "district": "Bagalkote",
+    "soil": "Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Sugarcane", "Maize", "Bengal Gram", "Pomegranate", "Paddy"]
+  },
+  {
+    "district": "Kalaburagi",
+    "soil": "Black Cotton Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Red Gram (Tur)", "Jowar", "Bengal Gram", "Cotton", "Sunflower"]
+  },
+  {
+    "district": "Yadgir",
+    "soil": "Black & Alluvial Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Red Gram", "Cotton", "Jowar", "Groundnut"]
+  },
+  {
+    "district": "Bidar",
+    "soil": "Deep Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Black Gram", "Red Gram", "Soybean", "Sugarcane", "Jowar"]
+  },
+  {
+    "district": "Raichur",
+    "soil": "Black & Deep Clay Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Cotton", "Groundnut", "Sunflower", "Red Gram"]
+  },
+  {
+    "district": "Koppal",
+    "soil": "Red & Black Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Maize", "Bajra", "Groundnut", "Pomegranate"]
+  },
+  {
+    "district": "Ballari",
+    "soil": "Black Cotton Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Cotton", "Maize", "Chilli", "Groundnut"]
+  },
+  {
+    "district": "Vijayanagara",
+    "soil": "Black & Alluvial Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Paddy", "Sugarcane", "Maize", "Banana", "Cotton"]
+  },
+  {
+    "district": "Chikkamagaluru",
+    "soil": "Red Laterite & Forest Soil",
+    "season": "Kharif, Rabi",
+    "crops": ["Coffee", "Arecanut", "Cardamom", "Paddy", "Black Pepper"]
+  }
+]

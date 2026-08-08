@@ -1,0 +1,180 @@
+/* ==========================================================================
+   KrishiPulse - 4 Aesthetic SaaS Templates & Typography System
+   Templates: Apitex Sunset Mesh, Petify Butter Amber, Linear Midnight, Notion Linen
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700;800&display=swap');
+
+/* Default Template 1: Apitex Sunset Mesh & Warm Champagne Canvas */
+:root {
+  --bg-primary: #FAF7F2;         /* Warm Champagne Cream */
+  --bg-secondary: #F3EEE6;       /* Soft Surface Tint */
+  --bg-sidebar: #FFFFFF;         /* Pure White Sidebar */
+  --bg-card: #FFFFFF;            /* Crisp Card Surface */
+  --bg-hover: #F5EFE6;           /* Soft Warm Hover Tint */
+  --border-color: #E8E2D8;       /* Subtle Warm Border */
+  
+  --primary-green: #15803D;      /* Deep Emerald Green */
+  --dark-green: #14532D;         /* Forest Dark Green */
+  --accent-amber: #F59E0B;       /* Warm Sunset Gold */
+  --accent-peach: #E86452;       /* Warm Coral Peach */
+  --accent-blue: #2563EB;        /* Action Royal Blue */
+  
+  /* Soft Pastel Card Background Tints */
+  --bg-pastel-amber: #FFFBEB;    /* Soft Butter Amber */
+  --border-pastel-amber: #FDE68A;
+  --bg-pastel-emerald: #F0FDF4;  /* Soft Fresh Mint */
+  --border-pastel-emerald: #BBF7D0;
+  --bg-pastel-sky: #F0F9FF;      /* Soft Sky Azure */
+  --border-pastel-sky: #BAE6FD;
+  --bg-pastel-purple: #FAF5FF;   /* Soft Lavender */
+  --border-pastel-purple: #E9D5FF;
+  
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-danger: #DC2626;
+  
+  --text-primary: #0F172A;       /* Deep Obsidian Dark */
+  --text-secondary: #475569;     /* Refined Charcoal */
+  --text-muted: #94A3B8;         /* Slate Muted */
+  
+  --border-radius: 20px;         /* Rounded 20px (Fintech Style) */
+  --border-radius-sm: 12px;      /* Pill / Action Radius */
+  --border-radius-lg: 28px;      /* Hero Gradient Radius */
+  
+  --shadow-soft: 0 12px 35px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 3px 10px rgba(15, 23, 42, 0.03);
+  --shadow-hover: 0 18px 40px rgba(15, 23, 42, 0.1);
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Template 2: Petify Butter Amber Dashboard */
+[data-template="petify"] {
+  --bg-primary: #FFFDF9;
+  --bg-secondary: #FEF9F0;
+  --bg-sidebar: #FFFFFF;
+  --bg-card: #FFFFFF;
+  --bg-hover: #FEF3C7;
+  --border-color: #FDE68A;
+  
+  --primary-green: #D97706;
+  --dark-green: #92400E;
+  --text-primary: #1C1917;
+  --text-secondary: #78350F;
+  --text-muted: #92400E;
+
+  --bg-pastel-amber: #FEF3C7;
+  --border-pastel-amber: #FCD34D;
+  --bg-pastel-emerald: #ECFDF5;
+  --border-pastel-emerald: #A7F3D0;
+}
+
+/* Template 3: Linear Midnight Sapphire (Dark Mode) */
+[data-template="linear"] {
+  --bg-primary: #0B1220;
+  --bg-secondary: #111827;
+  --bg-sidebar: #111827;
+  --bg-card: #161F2F;
+  --bg-hover: #1E293B;
+  --border-color: rgba(255, 255, 255, 0.08);
+  
+  --primary-green: #22C55E;
+  --dark-green: #15803D;
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  --bg-pastel-amber: #1E1B18;
+  --border-pastel-amber: #78350F;
+  --bg-pastel-emerald: #13271F;
+  --border-pastel-emerald: #065F46;
+  --bg-pastel-sky: #0C2340;
+  --border-pastel-sky: #075985;
+  --bg-pastel-purple: #21153B;
+  --border-pastel-purple: #6B21A8;
+}
+
+/* Template 4: Notion Minimalist Paper */
+[data-template="notion"] {
+  --bg-primary: #F8F7F4;
+  --bg-secondary: #EFECE6;
+  --bg-sidebar: #EFECE6;
+  --bg-card: #FFFFFF;
+  --bg-hover: #F2EFE9;
+  --border-color: #E2DFD7;
+  
+  --primary-green: #16A34A;
+  --dark-green: #14532D;
+  --text-primary: #09090B;
+  --text-secondary: #3F3F46;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
+}
+
+h1, h2, h3, h4, h5, h6, .card-title, .welcome-title, .brand-logo {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+.font-mono, [style*="font-family: monospace"] {
+  font-family: var(--font-mono) !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-heading);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input, select, textarea {
+  font-family: var(--font-body);
+}
+
+/* Custom Minimalist Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}

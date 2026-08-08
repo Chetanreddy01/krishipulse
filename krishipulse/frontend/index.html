@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>KrishiPulse — Smart Agriculture & Karnataka APMC Mandi Telemetry</title>
+
+  <!-- External Stylesheets (Grouped Clean CSS) -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+
+  <!-- Deferred JavaScript Modules -->
+  <script src="js/api.js" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/dashboard.js" defer></script>
+  <script src="js/advisor.js" defer></script>
+  <script src="js/weather.js" defer></script>
+  <script src="js/market.js" defer></script>
+  <script src="js/farm.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+
+  <div class="app-layout">
+    
+    <!-- 1. Left Sidebar Navigation Drawer (All 13 Modules) -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <div class="brand-header">
+          <div class="brand-logo">
+            <div class="brand-icon">🌱</div>
+            <span>KrishiPulse</span>
+          </div>
+          <button class="sidebar-toggle-btn" id="sidebar-toggle-btn" title="Toggle Sidebar">
+            ☰
+          </button>
+        </div>
+
+        <!-- Navigation Group 1: Core Modules -->
+        <div class="nav-group">
+          <div class="nav-group-title">Core Modules</div>
+          
+          <button class="nav-item active" data-tab="dashboard">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">📊</span>
+              <span class="nav-item-label">Dashboard</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="advisor">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🧪</span>
+              <span class="nav-item-label">Crop Advisor AI</span>
+            </div>
+            <span class="nav-badge">AI</span>
+          </button>
+
+          <button class="nav-item" data-tab="market">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">📈</span>
+              <span class="nav-item-label">Market Intelligence</span>
+            </div>
+            <span class="nav-badge">Live</span>
+          </button>
+
+          <button class="nav-item" data-tab="weather">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">⛅</span>
+              <span class="nav-item-label">Weather Telemetry</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="farm">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🛡️</span>
+              <span class="nav-item-label">Farm Management</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Navigation Group 2: Precision Labs -->
+        <div class="nav-group">
+          <div class="nav-group-title">Precision Labs</div>
+
+          <button class="nav-item" data-tab="disease">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🔬</span>
+              <span class="nav-item-label">Disease Detection</span>
+            </div>
+            <span class="nav-badge">AI</span>
+          </button>
+
+          <button class="nav-item" data-tab="pest">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🐛</span>
+              <span class="nav-item-label">Pest Diagnostics</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="irrigation">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">💧</span>
+              <span class="nav-item-label">Smart Irrigation</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="analytics">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">📈</span>
+              <span class="nav-item-label">Financial Analytics</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="schemes">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🏛️</span>
+              <span class="nav-item-label">Govt Subsidies</span>
+            </div>
+          </button>
+        </div>
+
+        <!-- Navigation Group 3: System -->
+        <div class="nav-group">
+          <div class="nav-group-title">System</div>
+
+          <button class="nav-item" data-tab="notifications">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">🔔</span>
+              <span class="nav-item-label">Notifications</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="profile">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">👤</span>
+              <span class="nav-item-label">User Profile</span>
+            </div>
+          </button>
+
+          <button class="nav-item" data-tab="settings">
+            <div class="nav-item-content">
+              <span class="nav-item-icon">⚙️</span>
+              <span class="nav-item-label">Settings</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sidebar Footer User Profile -->
+      <div class="sidebar-footer">
+        <div class="profile-card-mini">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Chetan" class="user-avatar">
+          <div class="profile-card-info">
+            <span class="profile-name">Chetan</span>
+            <span class="profile-phone">+91 7338025342</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- 2. Main Workspace Content Area -->
+    <div class="main-content">
+      
+      <!-- Top Glass Navbar Header -->
+      <header class="navbar">
+        <div class="navbar-left">
+          <div class="breadcrumb">
+            <span class="breadcrumb-sub">Workspace</span>
+            <span style="color: var(--border-color);">/</span>
+            <span id="current-tab-label">Dashboard Overview</span>
+          </div>
+
+          <!-- Region Dropdown Selector -->
+          <div class="region-selector">
+            <button class="region-btn" id="region-btn">
+              <span>📍 Mandya Region</span>
+              <span>▼</span>
+            </button>
+            <div class="region-dropdown" id="region-dropdown">
+              <button class="dropdown-item active">Mandya APMC Hub</button>
+              <button class="dropdown-item">Maddur APMC Market</button>
+              <button class="dropdown-item">Mysuru APMC Hub</button>
+              <button class="dropdown-item">Kolar APMC Market</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          
+          <!-- Aesthetic Theme Switcher Pill -->
+          <div class="theme-selector-pill">
+            <button class="theme-opt-btn active" data-theme="paper">🌿 Linen</button>
+            <button class="theme-opt-btn" data-theme="midnight">🌌 Midnight</button>
+            <button class="theme-opt-btn" data-theme="warm-sand">🪵 Sand</button>
+          </div>
+
+          <div class="search-trigger">
+            <span>🔍 Search crops, mandis, plots...</span>
+            <kbd>⌘K</kbd>
+          </div>
+
+          <!-- Chetan Profile Badge -->
+          <div class="user-profile-badge" id="header-profile-btn">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Chetan" class="user-avatar">
+            <span>CHETAN</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dynamic Page Container -->
+      <main class="page-container" id="app-content">
+        <!-- Rendered dynamically by script.js -->
+      </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div>KrishiPulse — Built for Chetan (7338025342 • chetanreddy445@gmail.com)</div>
+        <div>Mandya APMC Hub • Karnataka Agriculture SaaS</div>
+      </footer>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
