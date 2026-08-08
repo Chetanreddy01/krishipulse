@@ -4,6 +4,13 @@
    Description: Connects all 13 modules, Login/Signup auth modal, search & router
    ========================================================================== */
 
+import '../css/style.css';
+import '../css/layout.css';
+import '../css/components.css';
+import '../css/pages.css';
+import '../css/responsive.css';
+import '../css/animations.css';
+
 document.addEventListener('DOMContentLoaded', () => {
   // DOM Elements
   const appContent = $('#app-content');
